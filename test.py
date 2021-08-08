@@ -1,6 +1,7 @@
 import unittest
 import app
 import xmlrunner
+import os
 
 class TestHello(unittest.TestCase):
 
@@ -25,6 +26,6 @@ class TestHello(unittest.TestCase):
         self.assertIn(bytearray(f"{name}", 'utf-8'), rv.data)
 
 if __name__ == '__main__':
-    runner = xmlrunner.XMLTestRunner(output='test-reports')
-    unittest.main(testRunner=runner)
-    unittest.main() # Add another main unittest to create standard output
+    with open(os.path.join(os.getcwd(), 'test-reports', 'results.xml'), 'wb') as output:
+        runner = xmlrunner.XMLTestRunner(output='test-reports')
+        unittest.main(testRunner=runner)
