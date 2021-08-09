@@ -1,5 +1,10 @@
 pipeline {
-  agent { docker { image 'python:3.7-alpine' } }
+  agent { 
+    docker { 
+      image 'python:3.7-alpine'
+      args '--user 0:0'
+    } 
+  }
   stages {
     stage('build') {
       steps {
