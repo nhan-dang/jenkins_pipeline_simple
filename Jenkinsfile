@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
+        sh 'apt-get install sudo'
         sh 'sudo pip install virtualenv'
         sh 'virtualenv .venv'
         sh 'source .venv/bin/activate'
