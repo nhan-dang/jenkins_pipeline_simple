@@ -1,10 +1,8 @@
 pipeline {
-  agent { docker { image 'python:3.7.2' } }
+  agent { docker { image 'python:3.7.2-alpine' } }
   stages {
     stage('build') {
       steps {
-        sh 'apt-get install sudo'
-        sh 'sudo pip install virtualenv'
         sh 'virtualenv .venv'
         sh 'source .venv/bin/activate'
         sh 'pip install -r requirements.txt'
